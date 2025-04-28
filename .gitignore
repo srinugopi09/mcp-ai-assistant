@@ -1,0 +1,102 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+
+# Streamlit
+.streamlit/secrets.toml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Local configuration
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# AWS credentials
+aws_credentials.json
+credentials.json
+
+# Sensitive data
+*.pem
+*.key
+*.crt
+
+# Cache files
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary files
+.tmp/
+tmp/
+temp/
+
+
+# Backup files
+*.bak
+*.backup
+*~
+*.old
+*.orig
+*.backup[0-9]*
+*.backup[0-9]*.[0-9]*
+app.py.backup*
+src/**/*.backup*
+src/**/*.backup[0-9]*
+backups/
+*.backup
+
+# Private documentation
+docs/changes.md
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

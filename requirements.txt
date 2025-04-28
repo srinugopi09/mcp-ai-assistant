@@ -1,0 +1,27 @@
+# Python version: 3.11.3
+#
+# Original flexible version requirements:
+# streamlit>=1.24.0
+# boto3>=1.28.0
+# python-dotenv>=1.0.0
+# anthropic>=0.8.0
+# python-ulid>=1.1.0
+# pyyaml>=6.0
+
+# Locked versions for reproducibility - Updated 2025-04-22
+streamlit==1.44.1
+boto3==1.37.37
+python-dotenv==1.1.0
+anthropic==0.49.0
+python-ulid==3.0.0
+PyYAML==6.0.2
+
+# Additional dependencies
+requests==2.32.3
+pydantic==2.11.3
+httpx==0.28.1
+
+# MCP Agent dependencies
+mcp
+mcp-agent
+asyncio
