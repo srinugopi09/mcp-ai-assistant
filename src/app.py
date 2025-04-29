@@ -3,6 +3,8 @@ import asyncio
 import time
 import logging
 import json
+import sys
+import platform
 
 import streamlit as st
 from mcp import ListToolsResult
@@ -20,6 +22,15 @@ from functools import partial
 # ───────────────────────── LOGGING — turn on deep MCP debug
 logging.basicConfig(level=logging.DEBUG)
 logging.getLogger("mcp_agent").setLevel(logging.DEBUG)
+
+# Add a specific logger for server connections
+server_logger = logging.getLogger("mcp_server_connection")
+server_logger.setLevel(logging.DEBUG)
+
+# Log system information for debugging
+server_logger.info(f"Python version: {sys.version}")
+server_logger.info(f"Operating System: {platform.system()} {platform.release()}")
+server_logger.info(f"Platform: {platform.platform()}")
 
 # ───────────────────────── SESSION STATE BOOTSTRAP
 if "mcp_server_names" not in st.session_state:
@@ -254,11 +265,22 @@ async def get_ai_agent():
 
 
 async def main():
-    await app.initialize()
+    try:
+        await app.initialize()
+        server_logger.info("MCP app initialized successfully")
+    except Exception as e:
+        server_logger.error(f"Error initializing MCP app: {e}", exc_info=True)
+        st.error(f"Failed to initialize MCP: {str(e)}")
 
     # Re‑install custom servers after hot‑reloads
     for n, cfg in st.session_state["_custom_servers"].items():
-        app.context.server_registry.registry[n] = cfg
+        try:
+            server_logger.info(f"Registering server: {n} at {cfg.url}")
+            app.context.server_registry.registry[n] = cfg
+            server_logger.info(f"Server {n} registered successfully")
+        except Exception as e:
+            server_logger.error(f"Error registering server {n}: {e}", exc_info=True)
+            st.error(f"Failed to register server {n}: {str(e)}")
 
     # ─── SIDEBAR ────────────────────────────────────────────────────────────
     with st.sidebar:
